@@ -10,11 +10,16 @@
   }
 
   button {
+    cursor: pointer;
     font-size: 15px;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     background: black;
     color: white;
+
+    &:hover {
+      background: #333;
+    }
   }
 }
