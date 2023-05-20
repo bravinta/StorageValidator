@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "QSValidator",
+    "productName": "Storage Validator",
     "version": "0.0.1"
   },
   "tauri": {
@@ -41,7 +41,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.quikcode.qsvalidator",
+      "identifier": "com.bravinta.opensource.storagevalidator",
       "targets": "all"
     },
     "security": {
@@ -55,7 +55,7 @@
         "decorations": false,
         "fullscreen": false,
         "resizable": false,
-        "title": "QSValidator",
+        "title": "Storage Validator",
         "width": 550,
         "height": 400
       }
