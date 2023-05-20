@@ -1,54 +1,39 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/tauri";
-import "./App.css";
+import { useEffect } from "react";
+import {
+  isPermissionGranted,
+  requestPermission,
+} from "@tauri-apps/api/notification";
 
-function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
+import Data from "./components/data";
+import Header from "./components/header";
+import Main from "./components/main";
+import Panel from "./components/panel";
 
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("test", { name }));
-  }
+import s from "./styles/app.module.scss";
+
+export default function App() {
+  // Comprobamos si tenemos permiso para enviar notificaciones
+  const notify = async () => {
+    let permissionGranted = await isPermissionGranted();
+
+    // Si no tenemos permiso, lo solicitamos
+    if (!permissionGranted) {
+      const permission = await requestPermission();
+      permissionGranted = permission === "granted";
+    }
+  };
+
+  useEffect(() => {
+    notify();
+  }, []);
 
   return (
-    <div className="container">
-      <h1>Welcome to Tauri!</h1>
-
-      <div className="row">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <div className="row">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            greet();
-          }}
-        >
-          <input
-            id="greet-input"
-            onChange={(e) => setName(e.currentTarget.value)}
-            placeholder="Enter a name..."
-          />
-          <button type="submit">Greet</button>
-        </form>
-      </div>
-
-      <p>{greetMsg}</p>
+    <div className="">
+      <Header />
+      <br />
+      <Main />
+      <Data />
+      <Panel />
     </div>
   );
 }
-
-export default App;

@@ -12,10 +12,24 @@
   },
   "tauri": {
     "allowlist": {
+      "notification": {
+        "all": true 
+      },
       "all": false,
       "shell": {
         "all": false,
         "open": true
+      },
+      "window": {
+        "all": false,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true,
+        "startDragging": true
       }
     },
     "bundle": {
@@ -38,11 +52,12 @@
     },
     "windows": [
       {
+        "decorations": false,
         "fullscreen": false,
-        "resizable": true,
+        "resizable": false,
         "title": "QSValidator",
-        "width": 800,
-        "height": 600
+        "width": 550,
+        "height": 400
       }
     ]
   }

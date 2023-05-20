@@ -1,0 +1,24 @@
+.Data {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  h1 {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 15px;
+    margin: 0;
+    color: white;
+
+    span {
+      padding: 6px 10px;
+      background: black;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+  }
+}
